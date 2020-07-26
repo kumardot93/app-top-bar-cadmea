@@ -1,8 +1,7 @@
 #topBar {
 	height: 90px;
 	max-width: 100vw;
-	/* background: white; */
-	background-color: black;
+	background: white;
 	box-shadow: 0 1px 3px black;
 }
 

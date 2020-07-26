@@ -1,5 +1,6 @@
 import React from 'react';
-import Top, { css } from 'app-top-bar-cadmea';
+import Top from 'app-top-bar-cadmea';
+import 'app-top-bar-cadmea/dist/index.css';
 
 import Store from './redux/Store.js';
 
