@@ -1,0 +1,42 @@
+#topBar {
+	height: 90px;
+	max-width: 100vw;
+	/* background: white; */
+	background-color: black;
+	box-shadow: 0 1px 3px black;
+}
+
+.navLink {
+	font-size: x-large;
+	transition: 0.25s;
+	color: rgba(50, 50, 50, 0.7);
+}
+
+.navLink:hover {
+	color: white;
+	text-shadow: 0 0 3px black;
+	text-decoration: none;
+}
+
+#title {
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+	#title {
+		font-size: 8.5vw;
+	}
+	#navCont {
+		display: none;
+	}
+	#topBar {
+		height: 60px;
+	}
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 700px) {
+	#title {
+		font-size: 5.5vw;
+		margin-right: 40px;
+	}
+}

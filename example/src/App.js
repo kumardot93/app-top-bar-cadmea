@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Top, { css } from 'app-top-bar-cadmea';
 
-import { ExampleComponent } from 'app-top-bar-cadmea'
-import 'app-top-bar-cadmea/dist/index.css'
+import Store from './redux/Store.js';
 
-const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+function App(props) {
+	return <Top store={Store} />;
 }
 
-export default App
+export default App;
