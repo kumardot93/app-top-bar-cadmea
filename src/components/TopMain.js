@@ -13,7 +13,6 @@ function Top(props) {
 	useEffect(
 		() => {
 			//Get url from props before publish
-			// fetch(window.base + '/user/api/profile/', { credentials: window.cred }) //fetching profile data
 			fetch(props.profile_url, { credentials: props.fetch_credentials }) //fetching profile data
 				.then((response) => response.json())
 				.then((profileData) => props.updateProfile(profileData));

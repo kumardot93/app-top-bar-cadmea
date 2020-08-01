@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './css/UserBtn.module.css';
-
+import Theme from './Theme.js';
 import { connect } from 'react-redux';
 
 function UserBtn(props) {
@@ -34,6 +34,8 @@ function UserBtn(props) {
 					''
 				)}
 				<hr className="m-0 mt-1" />
+				<Theme />
+
 				<a //links profile and logout
 					href="#"
 					className={[ styles.navLink, styles.userPannelLink, 'pb-0 mt-2 mb-1 mr-2 ml-1' ].join(' ')}

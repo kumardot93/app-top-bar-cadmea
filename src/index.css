@@ -1,0 +1,10 @@
+/* default light theme */
+:root {
+	--body-color: rgb(247, 247, 247);
+	--primary-bgColor: white;
+	--complementary-bgColor: black;
+	--primary-color: black;
+	--secondary-color: rgba(50, 50, 50, 0.7);
+	--primary-shadow-color: black;
+	--green-color: green;
+}
