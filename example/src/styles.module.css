@@ -1,0 +1,5 @@
+.checkDiv {
+	height: 200px;
+	width: 200px;
+	background-color: var(--main_color);
+}
