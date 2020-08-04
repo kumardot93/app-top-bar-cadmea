@@ -5,26 +5,6 @@ import { connect } from 'react-redux';
 
 function UserBtn(props) {
 	const [ userPannelVis, changeVis ] = useState(0); //for visibility of user pannel
-	let RoundRobbinInc = () => {
-		console.log('RR called');
-		console.log(userPannelVis);
-		let vis = userPannelVis;
-		changeVis((userPannelVis + 1) % 2);
-		if (vis === 1) {
-			document.getElementsByTagName('body')[0].removeEventListener('click', RoundRobbinWrapper);
-		}
-	};
-	let RoundRobbinWrapper = (event) => {
-		// console.log('Wrapper called');
-		// setTimeout(RoundRobbinInc, 40);
-		RoundRobbinInc();
-	};
-
-	let VisUpdateHandler = () => {
-		console.log('vis handler called');
-		document.getElementsByTagName('body')[0].onclick = RoundRobbinWrapper;
-		changeVis(1);
-	};
 
 	return (
 		<div className="ml-2">
@@ -32,7 +12,7 @@ function UserBtn(props) {
 				className="p-0"
 				id={styles.userBtn}
 				onClick={(event) => {
-					if (userPannelVis === 0) VisUpdateHandler();
+					changeVis((userPannelVis + 1) % 2);
 				}}
 			>
 				<img //DP of user
@@ -63,7 +43,6 @@ function UserPannel(props) {
 			id={styles.userPannel}
 			className="p-2 pr-3 bg-white"
 			style={{ display: props.visiblity === 0 ? 'none' : 'block' }}
-			onClick={(ev) => setTimeout(props.changeVis, 10, 0)}
 		>
 			<span className={styles.userData}>{props.profile.username}</span>
 			<span className={[ styles.userData, 'text-secondary' ].join(' ')}>{props.profile.email}</span>
