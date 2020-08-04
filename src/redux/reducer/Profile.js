@@ -1,4 +1,4 @@
-const Profile = (state = {}, action) => {
+const Profile = (state = { fields: {} }, action) => {
 	switch (action.type) {
 		case 'updateProfile':
 			state = { ...action.payload };

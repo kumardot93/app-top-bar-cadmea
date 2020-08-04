@@ -20,8 +20,8 @@ function Top(props) {
 		[ props ]
 	);
 	return (
-		<div id={styles.topBar} className="d-flex flex-row align-items-center col-12 pl-2  text-light">
-			<h1 className="display-4 ml-2 text-dark" id={styles.title} onClick={() => window.location.assign('/')}>
+		<div id={styles.topBar} className="d-flex flex-row align-items-center w-100 pl-2 pr-3">
+			<h1 className="display-4 ml-2" id={styles.title} onClick={() => window.location.assign('/')}>
 				<span>Cadmea</span>
 			</h1>
 			{/* nav will not appear in the mobile view */}

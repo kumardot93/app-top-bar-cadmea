@@ -1,15 +1,3 @@
-.navLink {
-	font-size: x-large;
-	transition: 0.25s;
-	color: rgba(50, 50, 50, 0.7);
-}
-
-.navLink:hover {
-	color: white;
-	text-shadow: 0 0 3px black;
-	text-decoration: none;
-}
-
 #userBtn {
 	border-radius: 50%;
 	overflow: hidden;
@@ -22,7 +10,6 @@
 #userBtnImg {
 	height: 50px;
 	width: 50px;
-	/* border-radius: 50%; */
 }
 
 #userPannel {
@@ -41,17 +28,19 @@
 	border-width: 7px;
 	border-style: solid;
 	border-color: transparent transparent white transparent;
-	text-shadow: 0 0 4px black;
 }
 
 .userPannelLink {
+	text-decoration: none;
+	transition: 0.25s;
+	color: rgba(50, 50, 50, 0.7);
 	display: block;
 	font-size: medium;
 }
 
 .userPannelLink:hover {
+	text-decoration: none;
 	color: green;
-	text-shadow: none;
 	transform: scale(1.1);
 }
 
@@ -61,12 +50,8 @@
 }
 
 @media only screen and (max-width: 800px) {
-	#userBtnCont {
-		/* position: relative; */
-		/* right: 3vw; */
-	}
-
 	#userPannel {
+		/* because of changing height of top bar */
 		top: 72px;
 	}
 }

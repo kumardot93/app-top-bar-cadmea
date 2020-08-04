@@ -4,52 +4,86 @@ import Theme from './Theme.js';
 import { connect } from 'react-redux';
 
 function UserBtn(props) {
-	const [ userPannelVis, changeVis ] = useState('none');
+	const [ userPannelVis, changeVis ] = useState(0); //for visibility of user pannel
+	let RoundRobbinInc = () => {
+		console.log('RR called');
+		console.log(userPannelVis);
+		let vis = userPannelVis;
+		changeVis((userPannelVis + 1) % 2);
+		if (vis === 1) {
+			document.getElementsByTagName('body')[0].removeEventListener('click', RoundRobbinWrapper);
+		}
+	};
+	let RoundRobbinWrapper = (event) => {
+		// console.log('Wrapper called');
+		// setTimeout(RoundRobbinInc, 40);
+		RoundRobbinInc();
+	};
+
+	let VisUpdateHandler = () => {
+		console.log('vis handler called');
+		document.getElementsByTagName('body')[0].onclick = RoundRobbinWrapper;
+		changeVis(1);
+	};
+
 	return (
-		<div className="ml-2" id={styles.userBtnCont}>
+		<div className="ml-2">
 			<button
 				className="p-0"
 				id={styles.userBtn}
-				onClick={(ev) => changeVis(userPannelVis === 'block' ? 'none' : 'block')} //apear and disapear onClick
-				onBlur={(ev) => setTimeout(changeVis, 10, 'none')} //to make the dropdown disapear afetr user clicks somewhere else
+				onClick={(event) => {
+					if (userPannelVis === 0) VisUpdateHandler();
+				}}
 			>
-				<img //DP of user    :    Solve window.media_url dependincy on window either use props , redux or other technique
-					src={props.profile.name !== undefined ? props.media_url + props.profile.fields.profile_pic : ''}
+				<img //DP of user
+					src={
+						props.profile.fields.profile_pic !== undefined ? (
+							props.media_url + props.profile.fields.profile_pic
+						) : (
+							''
+						)
+					}
 					id={styles.userBtnImg}
 					alt=""
 				/>
 			</button>
-			<div
-				onClick={(ev) => setTimeout(changeVis, 15, 'block')} //Don't let dropdown disapear
-				id={styles.userPannel}
-				className="p-2 pr-3 bg-white"
-				style={{ display: userPannelVis }}
-			>
-				{props.profile.name !== undefined ? ( //profile data: username and email of user
-					<React.Fragment>
-						<span className={styles.userData}>{props.profile.username}</span>
-						<span className={[ styles.userData, 'text-secondary' ].join(' ')}>{props.profile.email}</span>
-					</React.Fragment>
-				) : (
-					''
-				)}
-				<hr className="m-0 mt-1" />
-				<Theme />
+			<UserPannel
+				visiblity={userPannelVis}
+				profile={props.profile}
+				metaData={props.MetaData}
+				changeVis={changeVis}
+			/>
+		</div>
+	);
+}
 
-				<a //links profile and logout
-					href="#"
-					className={[ styles.navLink, styles.userPannelLink, 'pb-0 mt-2 mb-1 mr-2 ml-1' ].join(' ')}
-					style={{ opacity: '25%' }}
-				>
-					Profile
-				</a>
-				<a
-					href={window.base + '/user/logout/'}
-					className={[ styles.navLink, styles.userPannelLink, 'pb-0 mb-0 mr-2 ml-1' ].join(' ')}
-				>
-					Logout
-				</a>
-			</div>
+function UserPannel(props) {
+	return (
+		<div
+			id={styles.userPannel}
+			className="p-2 pr-3 bg-white"
+			style={{ display: props.visiblity === 0 ? 'none' : 'block' }}
+			onClick={(ev) => setTimeout(props.changeVis, 10, 0)}
+		>
+			<span className={styles.userData}>{props.profile.username}</span>
+			<span className={[ styles.userData, 'text-secondary' ].join(' ')}>{props.profile.email}</span>
+
+			<hr className="m-0 mt-1" />
+			<Theme />
+
+			<a //links profile and logout
+				href="#"
+				className={[ styles.userPannelLink, 'pb-0 mt-2 mb-1 mr-2 ml-1' ].join(' ')}
+				style={{ opacity: '25%' }}
+			>
+				Profile
+			</a>
+			<a
+				href={props.metaData.base + '/user/logout/'}
+				className={[ styles.userPannelLink, 'pb-0 mb-0 mr-2 ml-1' ].join(' ')}
+			>
+				Logout
+			</a>
 		</div>
 	);
 }
@@ -57,7 +91,8 @@ function UserBtn(props) {
 const mapStateToProps = (state) => {
 	return {
 		profile: state.Profile,
-		media_url: state.MetaData.media_url
+		media_url: state.MetaData.media_url,
+		MetaData: state.MetaData
 	};
 };
 
