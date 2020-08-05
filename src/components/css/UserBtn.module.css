@@ -16,7 +16,8 @@
 	position: absolute;
 	right: 20px;
 	top: 85px;
-	filter: drop-shadow(1px 1px 2px black);
+	background-color: var(--primary-bgColor, 'white');
+	filter: drop-shadow(1px 0px 2px var(--primary-shadow-color));
 	z-index: 2;
 }
 
@@ -27,26 +28,30 @@
 	content: '';
 	border-width: 7px;
 	border-style: solid;
-	border-color: transparent transparent white transparent;
+	border-color: transparent transparent var(--primary-bgColor, 'white') transparent;
 }
 
 .userPannelLink {
 	text-decoration: none;
 	transition: 0.25s;
-	color: rgba(50, 50, 50, 0.7);
+	color: var(--secondary-color, rgba(50, 50, 50, 0.7));
 	display: block;
 	font-size: medium;
 }
 
 .userPannelLink:hover {
 	text-decoration: none;
-	color: green;
+	color: var(--green-color, green);
 	transform: scale(1.1);
 }
 
 .userData {
 	display: block;
-	color: black;
+	color: var(--primary-color, black);
+}
+
+.themeColor {
+	color: var(--primary-color, black);
 }
 
 @media only screen and (max-width: 800px) {

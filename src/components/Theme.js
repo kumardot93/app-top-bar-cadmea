@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Switch from './Switch.js';
+import styles from './css/UserBtn.module.css';
+
+import { connect } from 'react-redux';
 
 //Controller component for Theme
 function Theme(props) {
@@ -10,19 +13,20 @@ function Theme(props) {
 		let newTheme = theme === 'dark' ? 'light' : 'dark'; //switching to new theme based on current theme
 		Cookies.set('theme', newTheme);
 		changeTheme(newTheme);
+		props.theme[newTheme].forEach((rule) => {
+			//iterates over MetaData.theme.dark/light and set proporty of root
+			document.documentElement.style.setProperty(rule[0], rule[1]);
+		});
 	};
 
-	useEffect(
-		() => {
-			let prevTheme = Cookies.get('theme');
-			if (prevTheme == 'dark') SwitchThemeController();
-		},
-		[ 1 ] //constant is passes to run this block of code only once
-	);
-
+	useEffect(() => {
+		let prevTheme = Cookies.get('theme');
+		if (prevTheme == 'dark') SwitchThemeController(); //Checks for previous theme setting in cookie
+	}, []);
+	console.log(styles.themeColor);
 	return (
 		<Switch //Presentation component for theme. It is a general bootstrap switch
-			className="mt-1"
+			className={`mt-1 ${styles.userData}`}
 			uniqueID="switch"
 			checked={theme === 'dark'}
 			onChange={SwitchThemeController}
@@ -30,4 +34,11 @@ function Theme(props) {
 		/>
 	);
 }
-export default Theme;
+
+const mapStateToProps = (state) => {
+	return {
+		theme: state.MetaData.theme
+	};
+};
+
+export default connect(mapStateToProps)(Theme);

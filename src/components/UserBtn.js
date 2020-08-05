@@ -4,7 +4,7 @@ import Theme from './Theme.js';
 import { connect } from 'react-redux';
 
 function UserBtn(props) {
-	const [ userPannelVis, changeVis ] = useState(0); //for visibility of user pannel
+	const [ userPannelVis, changeVis ] = useState(0); //decides visibility of user pannel
 
 	return (
 		<div className="ml-2">
@@ -12,6 +12,7 @@ function UserBtn(props) {
 				className="p-0"
 				id={styles.userBtn}
 				onClick={(event) => {
+					//for changing visiblity of userPannel
 					changeVis((userPannelVis + 1) % 2);
 				}}
 			>
@@ -39,11 +40,7 @@ function UserBtn(props) {
 
 function UserPannel(props) {
 	return (
-		<div
-			id={styles.userPannel}
-			className="p-2 pr-3 bg-white"
-			style={{ display: props.visiblity === 0 ? 'none' : 'block' }}
-		>
+		<div id={styles.userPannel} className="p-2 pr-3" style={{ display: props.visiblity === 0 ? 'none' : 'block' }}>
 			<span className={styles.userData}>{props.profile.username}</span>
 			<span className={[ styles.userData, 'text-secondary' ].join(' ')}>{props.profile.email}</span>
 

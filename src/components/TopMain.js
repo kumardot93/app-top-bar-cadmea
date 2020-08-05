@@ -10,15 +10,11 @@ import { updateProfile } from './../redux/action/Profile.js';
 // Entry point for the top bar
 function Top(props) {
 	//Fetching the user profile data
-	useEffect(
-		() => {
-			//Get url from props before publish
-			fetch(props.profile_url, { credentials: props.fetch_credentials }) //fetching profile data
-				.then((response) => response.json())
-				.then((profileData) => props.updateProfile(profileData));
-		},
-		[ props ]
-	);
+	useEffect(() => {
+		fetch(props.profile_url, { credentials: props.fetch_credentials }) //fetching profile data
+			.then((response) => response.json())
+			.then((profileData) => props.updateProfile(profileData));
+	}, []);
 	return (
 		<div id={styles.topBar} className="d-flex flex-row align-items-center w-100 pl-2 pr-3">
 			<h1 className="display-4 ml-2" id={styles.title} onClick={() => window.location.assign('/')}>

@@ -9,15 +9,15 @@ Movethis element to cadmea utility later
 function Swicth(props) {
 	//required props: className, uniqueID, checked, onClick, label
 	return (
-		<div className={[ 'custom-control custom-switch', props.className ? props.className : '' ].join(' ')}>
+		<div className={[ 'custom-control custom-switch', props.className ].join(' ')}>
 			<input
 				type="checkbox"
 				id={props.uniqueID}
-				className="custom-control-input"
+				className={`custom-control-input ${props.inputClass}`}
 				checked={props.checked}
 				onChange={props.onChange}
 			/>
-			<label className="custom-control-label text-dark" htmlFor={props.uniqueID}>
+			<label className={`custom-control-label ${props.labelClass}`} htmlFor={props.uniqueID}>
 				{props.label}
 			</label>
 		</div>

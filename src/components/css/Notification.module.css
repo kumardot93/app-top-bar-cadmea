@@ -1,3 +1,4 @@
 #notifBtn {
 	font-size: x-large;
+	color: var(--primary-color, black);
 }

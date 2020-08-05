@@ -16,3 +16,4 @@ function Top(props) {
 export default Top;
 export { ProfileReducer, MetaData }; //Reducers for Redux
 export * as MetaStateAction from './redux/action/MetaData.js'; //Actions for Meta Data Reducer
+export * as ProfileStateAction from './redux/action/Profile.js';
