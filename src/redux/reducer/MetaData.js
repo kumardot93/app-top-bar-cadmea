@@ -9,6 +9,7 @@ const MetaData = (
 				[ '--body-color', 'rgb(247, 247, 247)' ],
 				[ '--primary-bgColor', 'white' ],
 				[ '--complementary-bgColor', 'black' ],
+				[ '--secondary-bgColor', 'rgb(220, 225, 225)' ],
 				[ '--primary-color', 'black' ],
 				[ '--secondary-color', 'rgba(50, 50, 50, 0.7)' ],
 				[ '--primary-shadow-color', 'black' ],
@@ -17,6 +18,7 @@ const MetaData = (
 			dark: [
 				[ '--body-color', 'rgba(0, 0, 0, 0.9)' ],
 				[ '--primary-bgColor', 'rgb(30, 34, 36)' ],
+				[ '--secondary-bgColor', 'rgb(60, 65, 70)' ],
 				[ '--complementary-bgColor', 'white' ],
 				[ '--primary-color', 'white' ],
 				[ '--secondary-color', 'silver' ],

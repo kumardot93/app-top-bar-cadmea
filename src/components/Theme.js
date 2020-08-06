@@ -23,7 +23,6 @@ function Theme(props) {
 		let prevTheme = Cookies.get('theme');
 		if (prevTheme == 'dark') SwitchThemeController(); //Checks for previous theme setting in cookie
 	}, []);
-	console.log(styles.themeColor);
 	return (
 		<Switch //Presentation component for theme. It is a general bootstrap switch
 			className={`mt-1 ${styles.userData}`}
